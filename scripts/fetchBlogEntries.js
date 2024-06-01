@@ -26,10 +26,13 @@ function fetchBlogEntries(options) {
             (link) => link.rel === "alternate",
           ).href;
 
-          // Conditionally add target attribute based on 'openInNewTab'
-          const targetAttr = openInNewTab ? ' target="_blank"' : "";
-          body += `<h3><a href="${blogUrl}"${targetAttr}>${title}</a></h3>`;
-          body += content + "<p>";
+          // Only include entries published on or after the first day of the current month
+          if (published >= today) {
+            // Conditionally add target attribute based on 'openInNewTab'
+            const targetAttr = openInNewTab ? ' target="_blank"' : "";
+            body += `<h3><a href="${blogUrl}"${targetAttr}>${title}</a></h3>`;
+            body += content + "<p>";
+          }
         });
       } else {
         body = "<h3>No News is Bad News</h3>";
