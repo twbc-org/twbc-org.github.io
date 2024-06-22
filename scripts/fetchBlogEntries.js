@@ -31,7 +31,6 @@ function fetchBlogEntries(options) {
           if (published >= today) {
             // Conditionally add target attribute based on 'openInNewTab'
             const targetAttr = openInNewTab ? ' target="_blank"' : "";
-            body += content + "<p>";
             body += "<tr><td>";
             body += `<h3><a href="${blogUrl}"${targetAttr}>${title}</a></h3>`;
             body += "</td></tr><tr><td>";
