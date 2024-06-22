@@ -4,6 +4,7 @@ function fetchBlogEntries(options) {
     baseUrl = "",
     maxResults = 10,
     openInNewTab = false, // Rename 'anotherOption' to 'openInNewTab' for clarity
+    blogContentId = "blog-content", // Add blogContentId with a default value
   } = options || {}; // Ensure options is an object if undefined
 
   const url = `${baseUrl}/feeds/posts/default?max-results=${maxResults}&alt=json`;
@@ -38,11 +39,11 @@ function fetchBlogEntries(options) {
         body = "<h3>No News is Bad News</h3>";
       }
 
-      document.getElementById("blog-content").innerHTML = body;
+      document.getElementById(blogContentId).innerHTML = body;
     })
     .catch((error) => {
       console.error("Error fetching blog entries:", error);
-      document.getElementById("blog-content").innerHTML =
+      document.getElementById(blogContentId).innerHTML =
         "<h3>Error loading blog entries</h3>";
     });
 }
