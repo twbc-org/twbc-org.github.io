@@ -16,7 +16,7 @@ function fetchBlogEntries(options) {
       today.setDate(1);
       today.setMonth(today.getMonth() - 1);
       today.setHours(0, 0, 0);
-      let body = "";
+      let body = '<table style="width: 100%;">';
 
       if (json.feed && json.feed.entry) {
         json.feed.entry.forEach((entry) => {
@@ -31,13 +31,20 @@ function fetchBlogEntries(options) {
           if (published >= today) {
             // Conditionally add target attribute based on 'openInNewTab'
             const targetAttr = openInNewTab ? ' target="_blank"' : "";
-            body += `<h3><a href="${blogUrl}"${targetAttr}>${title}</a></h3>`;
             body += content + "<p>";
+            body += "<tr><td>";
+            body += `<h3><a href="${blogUrl}"${targetAttr}>${title}</a></h3>`;
+            body += "</td></tr><tr><td>";
+            body += content;
+            body += '</td></tr><tr><td align = "left">';
+            body += `<div style="text-align: center;"><h3><a href="${blogUrl}"${targetAttr} class="read-more-btn">Read More</a></h3></div>`;
+            body += "</td></tr>";
           }
         });
       } else {
         body = "<h3>No News is Bad News</h3>";
       }
+      body += "</table>";
 
       document.getElementById(blogContentId).innerHTML = body;
     })
