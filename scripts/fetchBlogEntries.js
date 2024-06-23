@@ -35,7 +35,7 @@ function fetchBlogEntries(options) {
             body += `<h3><a href="${blogUrl}"${targetAttr}>${title}</a></h3>`;
             body += "</td></tr><tr><td>";
             body += content;
-            body += "</td></tr><tr><td>";
+            body += "</td></tr><tr><td align = "right">";
             body += `<div style="text-align: right;"><h3><a href="${blogUrl}"${targetAttr} class="read-more-btn">Read More</a></h3></div>`;
             body += "</td></tr>";
           }
