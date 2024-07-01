@@ -3,11 +3,12 @@ function fetchBlogEntries(options) {
   const {
     baseUrl = "",
     maxResults = 10,
-    openInNewTab = false, // Rename 'anotherOption' to 'openInNewTab' for clarity
-    blogContentId = "blog-content", // Add blogContentId with a default value
+    openInNewTab = false,
+    blogContentId = "blog-content",
+    label = "Newsletter",
   } = options || {}; // Ensure options is an object if undefined
 
-  const url = `${baseUrl}/feeds/posts/default?max-results=${maxResults}&alt=json`;
+  const url = `${baseUrl}/feeds/posts/default/-/${label}?max-results=${maxResults}&alt=json`;
 
   fetch(url)
     .then((response) => response.json())
