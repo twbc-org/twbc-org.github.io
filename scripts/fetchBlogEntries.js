@@ -30,13 +30,10 @@ function fetchBlogEntries(options) {
 
           // Only include entries published on or after the first day of the current month
           if (published >= today) {
-            // Conditionally add target attribute based on 'openInNewTab'
             const targetAttr = openInNewTab ? ' target="_blank"' : "";
-            body += "<tr><td>";
+            body += '<tr style="border-bottom: 1px solid #ddd;"><td>';
             body += `<h3><a href="${blogUrl}"${targetAttr}>${title}</a></h3>`;
-            body += "</td></tr><tr><td>";
             body += content;
-            body += '</td></tr><tr><td align="right">';
             body += `<div style="text-align: right;"><h3><a href="${blogUrl}"${targetAttr} class="read-more-btn">Read More</a></h3></div>`;
             body += "</td></tr>";
           }
